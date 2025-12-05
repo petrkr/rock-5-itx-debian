@@ -19,3 +19,8 @@ How to install native Debian 13 on Rock 5 ITX on NVMe with RAID and UEFI support
  - Install debian 13 as you wish
  - ....TODO about vendor kernel....
 
+## Known problems
+ - in ACPI mode internal eMMC (talking about ITX+) is not visible
+ - Keyboard of NanoKVM in multimode does not work, you must use HID-Only mode
+ - Mainline kernel DOES not have drivers for GPU, so MMP does not works (at jellyfin for example)
+
