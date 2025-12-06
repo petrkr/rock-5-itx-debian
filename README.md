@@ -31,6 +31,11 @@ How to install native Debian 13 on Rock 5 ITX on NVMe with RAID and UEFI support
  - create kernel post install hook
  - manually run hook with actuall kernel version
 
+## GPU Jellyfin / FFMPEG
+ - required vendor kernel (in time of writing) 6.1.115 tested to works
+ - OpenCL runtime https://github.com/tsukumijima/libmali-rockchip/releases/download/v1.9-1-2131373/libmali-valhall-g610-g24p0-gbm_1.9-1_arm64.deb
+ - test with `/usr/lib/jellyfin-ffmpeg/ffmpeg -v debug -init_hw_device rkmpp=rk -init_hw_device opencl=ocl@rk` command (jellyfin ffmpeg)
+ - more documentation https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/rockchip/
 
 ## Known problems
  - in ACPI mode internal eMMC (talking about ITX+) is not visible
