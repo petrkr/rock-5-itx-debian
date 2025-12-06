@@ -21,7 +21,7 @@ How to install native Debian 13 on Rock 5 ITX on NVMe with RAID and UEFI support
 
 ## GRUB
  - install new linux discovery with DTB support
- - wget https://raw.githubusercontent.com/armbian/build/refs/heads/main/packages/blobs/grub/09_linux_with_dtb.sh
+ - copy etc/grub.d/09_linux_with_dtb.sh
  - remove old 10_linux and 20_linux_xen
  - create kernel post install hook
  - manually run hook with actuall kernel version
@@ -32,6 +32,9 @@ How to install native Debian 13 on Rock 5 ITX on NVMe with RAID and UEFI support
  - wget -O- https://apt.armbian.com/armbian.key   | gpg --dearmor| tee /usr/share/keyrings/armbian-archive-keyring.gpg
  - create /etc/armbian-grub-with-dtb with payload BOOT_FDT_FILE=rockchip/rk3588-rock-5-itx.dtb
  - apt install linux-image-vendor-rk35xx linux-dtb-vendor-rk35xx linux-headers-vendor-rk35xx
+ - remove stock kernel
+ - apt purge linux-image
+ - Switch in UEFI to DTB mode from ACPI mode, select Vendor kernel
 
 ## GPU Jellyfin / FFMPEG
  - required vendor kernel (in time of writing) 6.1.115 tested to works
