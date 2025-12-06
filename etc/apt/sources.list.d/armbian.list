@@ -1,0 +1,3 @@
+# Armbian repository because of vendor kernel
+deb [signed-by=/usr/share/keyrings/armbian-archive-keyring.gpg] https://repo.armbian.com/apt trixie main
+

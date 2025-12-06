@@ -21,6 +21,7 @@ How to install native Debian 13 on Rock 5 ITX on NVMe with RAID and UEFI support
 
  - Add armbian sources, it contains vendor kernel
    - deb [signed-by=/usr/share/keyrings/armbian-archive-keyring.gpg] https://repo.armbian.com/apt trixie main
+ - wget -O- https://apt.armbian.com/armbian.key   | gpg --dearmor| tee /usr/share/keyrings/armbian-archive-keyring.gpg
  - create /etc/armbian-grub-with-dtb with payload BOOT_FDT_FILE=rockchip/rk3588-rock-5-itx.dtb
 
 
