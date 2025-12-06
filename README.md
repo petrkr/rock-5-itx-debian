@@ -35,6 +35,9 @@ How to install native Debian 13 on Rock 5 ITX on NVMe with RAID and UEFI support
  - remove stock kernel
  - apt purge linux-image
  - Switch in UEFI to DTB mode from ACPI mode, select Vendor kernel
+ - vendor kernel have different ethernet names, so old interfaces wont work.
+  - enP3p49s0 first ethernet
+  - enP4p65s0 second ethernet
 
 ## GPU Jellyfin / FFMPEG
  - required vendor kernel (in time of writing) 6.1.115 tested to works
