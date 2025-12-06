@@ -1,0 +1,18 @@
+#! /bin/bash
+set -e
+
+declare kversion="$1" # # We're passed the version of the kernel being installed
+echo "Armbian: installing DTB for GRUB: $kversion" >&2
+
+if [[ -f /etc/armbian-grub-with-dtb ]]; then
+	echo "Armbian: /etc/armbian-grub-with-dtb found, installing DTB for GRUB" >&2
+	declare BOOT_FDT_FILE
+	source /etc/armbian-grub-with-dtb
+	declare target_dtb_file="/boot/armbian-dtb-${kversion}"
+	declare source_dtb_file="/usr/lib/linux-image-${kversion}/${BOOT_FDT_FILE}"
+	echo "Armbian: installing DTB for GRUB: $source_dtb_file -> $target_dtb_file" >&2
+	cp -v "${source_dtb_file}" "${target_dtb_file}"
+	echo "Armbian: installing DTB for GRUB: done." >&2
+else
+	echo "Armbian: /etc/armbian-grub-with-dtb not found, skipping DTB for GRUB" >&2
+fi
