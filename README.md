@@ -14,6 +14,13 @@ How to install native Debian 13 on Rock 5 ITX on NVMe with RAID and UEFI support
  - in time of writing NanoKVM HID with ISO does not works in ACPI/UEFI mode, use native keyboard or use native Flash drive and then use NanoKVM in HID-Only mode
  - Switch in UEFI firmware to ACPI only mode, because in time of writing mainline kernel does not supports DTD or Both
 
+## RAID
+If you want UEFI partition on raid, you must use old metadata, which are on end-of-partition, so UEFI bios can see them
+
+`mdadm --create /dev/md/esp --level=1 --raid-devices=2 --metadata=1.0 /dev/nvme0n1p1 /dev/nvme1n1p1`
+`mkfs.vfat -n EFI /dev/md/esp`
+
+
 ## Instalation
  - Boot from ISO (or flash)
  - Install debian 13 as you wish
