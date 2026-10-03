@@ -35,12 +35,11 @@ If you want UEFI partition on raid, you must use old metadata, which are on end-
 
 ## Vendor kernel installation
  - Add armbian sources, it contains vendor kernel
-   - deb [signed-by=/usr/share/keyrings/armbian-archive-keyring.gpg] https://repo.armbian.com/apt trixie main
- - wget -O- https://apt.armbian.com/armbian.key   | gpg --dearmor| tee /usr/share/keyrings/armbian-archive-keyring.gpg
- - create /etc/armbian-grub-with-dtb with payload BOOT_FDT_FILE=rockchip/rk3588-rock-5-itx.dtb
- - apt install linux-image-vendor-rk35xx linux-dtb-vendor-rk35xx linux-headers-vendor-rk35xx
- - remove stock kernel
- - apt purge linux-image
+   - Add repository to `/etc/apt/sources.list.d/armbian.list` `deb [signed-by=/usr/share/keyrings/armbian-archive-keyring.gpg] https://repo.armbian.com/apt trixie main`
+   - Import keys `wget -O- https://apt.armbian.com/armbian.key   | gpg --dearmor| tee /usr/share/keyrings/armbian-archive-keyring.gpg`
+ - create `/etc/armbian-grub-with-dtb` with payload `BOOT_FDT_FILE=rockchip/rk3588-rock-5-itx.dtb`
+ - Install vendor kernel `apt install linux-image-vendor-rk35xx linux-dtb-vendor-rk35xx linux-headers-vendor-rk35xx`
+ - remove stock kernel `apt purge linux-image`
  - Switch in UEFI to DTB mode from ACPI mode, select Vendor kernel
  - vendor kernel have different ethernet names, so old interfaces wont work.
   - enP3p49s0 first ethernet
